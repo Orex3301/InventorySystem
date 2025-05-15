@@ -4,9 +4,9 @@ namespace Gameplay.Inventory
 {
     public class InventoryData 
     {
-        public event System.Action WeaponAdded;
-        public event System.Action UsableItemAdded;
-        public event System.Action FoodAdded;
+        public event System.Action WeaponsChanged;
+        public event System.Action UsableItemsChanged;
+        public event System.Action FoodsChanged;
 
         private List<IWeaponItem> _weapons;
         private List<IUsableItem> _usables;
@@ -21,17 +21,32 @@ namespace Gameplay.Inventory
         public void AddWeapon(IWeaponItem weapon)
         {
             _weapons.Add(weapon);
-            WeaponAdded?.Invoke();
+            WeaponsChanged?.Invoke();
         }
         public void AddUsableItem(IUsableItem item)
         {
             _usables.Add(item);
-            UsableItemAdded?.Invoke();
+            UsableItemsChanged?.Invoke();
         }
         public void AddFood(IFoodItem food)
         {
             _foods.Add(food);
-            FoodAdded?.Invoke();
+            FoodsChanged?.Invoke();
+        }
+        public void RemoveWeapon(IWeaponItem weapon)
+        {
+            _weapons.Remove(weapon);
+            WeaponsChanged?.Invoke();
+        }
+        public void RemoveFod(IFoodItem food)
+        {
+            _foods.Remove(food);
+            FoodsChanged?.Invoke();
+        }
+        public void RemoveUsableItem(IUsableItem item)
+        {
+            _usables.Remove(item);
+            UsableItemsChanged?.Invoke();
         }
     }
 }
