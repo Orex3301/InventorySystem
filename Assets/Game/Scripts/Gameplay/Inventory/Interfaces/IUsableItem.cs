@@ -2,6 +2,6 @@
 {
     public interface IUsableItem : IInventoryItem
     {
-        public void Use();
+        public string Action { get; }
     }
 }
