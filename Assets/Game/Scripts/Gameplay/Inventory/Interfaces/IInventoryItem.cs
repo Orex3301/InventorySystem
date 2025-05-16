@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 namespace Gameplay.Inventory
 {
     public interface IInventoryItem

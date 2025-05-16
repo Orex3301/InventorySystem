@@ -1,6 +1,5 @@
 ﻿using Gameplay.Inventory;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Assets.Game.Scripts.Configs
 {

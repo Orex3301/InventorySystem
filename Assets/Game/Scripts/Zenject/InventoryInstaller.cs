@@ -8,8 +8,6 @@ public class InventoryInstaller : MonoInstaller
     [SerializeField] private ItemCellObject _itemCellPrefab;
     public override void InstallBindings()
     {
-        InventoryWindow window = Container.InstantiatePrefabForComponent<InventoryWindow>(_windowPrefab);
-        Container.BindInterfacesAndSelfTo<InventoryWindow>().FromInstance(window).AsSingle();
         Container.BindInterfacesAndSelfTo<ItemCellObject>().FromInstance(_itemCellPrefab).AsSingle();
         Container.BindInterfacesAndSelfTo<ItemCellsFactory>().AsSingle().NonLazy();
 
@@ -20,5 +18,8 @@ public class InventoryInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<InventoryVisualizer<IFoodItem>>().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<InventoryVisualizer<IWeaponItem>>().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<InventoryVisualizer<IUsableItem>>().AsSingle().NonLazy();
+
+        InventoryWindow window = Container.InstantiatePrefabForComponent<InventoryWindow>(_windowPrefab);
+        Container.BindInterfacesAndSelfTo<InventoryWindow>().FromInstance(window).AsSingle();
     }
 }

@@ -9,7 +9,7 @@ namespace Assets.Game.Scripts.Tests
 		private InventoryVisualizer<IFoodItem> _visualizer;
 
 		[Inject]
-		public void Construct(InventoryVisualizer<IFoodItem> visualizer)
+		private void Construct(InventoryVisualizer<IFoodItem> visualizer)
 		{
 			_visualizer = visualizer;
 		}

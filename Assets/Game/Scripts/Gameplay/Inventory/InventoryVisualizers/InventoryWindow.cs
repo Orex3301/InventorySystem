@@ -10,11 +10,17 @@ namespace Gameplay.Inventory
 
 		public event System.Action Destroyed;
 
+        private void Start()
+        {
+            gameObject.SetActive(false);
+        }
+
         public void ShowCells<T>() where T : IInventoryItem
         {
-            _weaponsContentHolder.gameObject.SetActive(typeof(T) is IWeaponItem);
-            _foodsContentHolder.gameObject.SetActive(typeof(T) is IFoodItem);
-            _usableItemsContentHolder.gameObject.SetActive(typeof(T) is IUsableItem);
+            gameObject.SetActive(true);
+            _weaponsContentHolder.gameObject.SetActive(typeof(T) == typeof(IWeaponItem));
+            _foodsContentHolder.gameObject.SetActive(typeof(T) == typeof(IFoodItem));
+            _usableItemsContentHolder.gameObject.SetActive(typeof(T) == typeof(IUsableItem));
         }
 
         public Transform GetContentHolder<T>() where T : IInventoryItem
